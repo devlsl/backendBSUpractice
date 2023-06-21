@@ -10,7 +10,7 @@ class BorrowedItemsController {
         id: item['Инвентарный номер'],
         name: noSpaces(item['Название']),
         request_id: item['ID заявки'],
-        login: noSpaces(item['Логин сотрудника),
+        login: noSpaces(item['Логин сотрудника']),
         comment: item['Комментарий'],
         date: item['Дата']
       }))

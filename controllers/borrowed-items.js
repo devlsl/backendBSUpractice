@@ -8,7 +8,11 @@ class BorrowedItemsController {
 
       const items = response.rows.map((item) => ({
         id: item['Инвентарный номер'],
-        name: noSpaces(item['Название'])
+        name: noSpaces(item['Название']),
+        request_id: item['ID заявки'],
+        login: item['Логин сотрудника'],
+        comment: item['Комментарий'],
+        date: item['Дата']
       }))
 
       res.json({

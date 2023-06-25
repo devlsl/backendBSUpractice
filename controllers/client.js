@@ -32,15 +32,6 @@ class ClientController {
       const newApplicationId = newApplicationIdRes.rows[0].new_request
 
       for (let itemId in itemsWithCount) {
-        console.log(
-          'itemId:',
-          itemId,
-          'count',
-          itemsWithCount[itemId],
-          'ds',
-          newApplicationId
-        )
-
         await db.query(
           `select new_request_item(${newApplicationId}::smallint, ${itemId}::smallint, ${itemsWithCount[itemId]}::smallint);`
         )

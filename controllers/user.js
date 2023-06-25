@@ -3,7 +3,7 @@ const noSpaces = require('../utils/noSpaces')
 
 class UserController {
   async authUser(req, res) {
-    const { login, password, role } = req.query
+    const { login, password } = req.query
     try {
       const response = await db.query('select * from get_user_by_login($1)', [
         login
@@ -12,10 +12,7 @@ class UserController {
       let user = {}
       let message = ''
 
-      if (
-        response.rows[0].ID === null ||
-        noSpaces(response.rows[0]['Роль']) !== role
-      ) {
+      if (response.rows[0].ID === null) {
         message = 'Пользователь с таким логином не найден'
         user = null
       } else {

@@ -7,12 +7,13 @@ class BorrowedItemsController {
       const response = await db.query('select * from borrowed_items_view')
 
       const items = response.rows.map((item) => ({
-        id: item['Инвентарный номер'],
-        name: noSpaces(item['Название']),
-        request_id: item['ID заявки'],
+        id_request: item['ID заявки'],
+        id_user: item['ID сотрудника'],
         login: noSpaces(item['Логин сотрудника']),
-        comment: item['Комментарий'],
-        date: item['Дата']
+        inv_num: item['Инвентарный номер'],
+        name: noSpaces(item['Название']),
+        date: item['Дата'].toISOString().split('T')[0],
+        comment: item['Комментарий']
       }))
 
       res.json({

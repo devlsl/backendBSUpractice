@@ -59,7 +59,7 @@ class ClientController {
         applicationId: el['ID заявки'],
         itemTypeId: el['ID оборудования'],
         name: noSpaces(el['Название оборудования']),
-        count: el['Количество']
+        count: +el['Количество']
       }))
 
       const itemsRes = await db.query(
